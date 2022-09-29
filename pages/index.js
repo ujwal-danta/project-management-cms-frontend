@@ -8,7 +8,7 @@ export default function Home() {
     <Layout>
       <div className={styles.container}>
         <Navbar />
-        <h1>Home Page</h1>
+        <p>Home Page</p>
       </div>
     </Layout>
 

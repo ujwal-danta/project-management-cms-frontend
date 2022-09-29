@@ -1,47 +1,57 @@
-import Link from 'next/link';
+import Link from 'next/link'
 import React, { useState } from 'react'
-import NavItem from './NavItem';
+import NavItem from './NavItem'
 import styles from '../styles/Navbar.module.css'
 
 export default function Navbar() {
     const MENU_LIST = [
-        { text: "Home", href: "/" },
-        { text: "Dashboard", href: "/dashboard" },
-        { text: "Admin Login", href: "/adminLogin" },
-        { text: "About", href: "/about" }
+        {
+            text: 'Home',
+            href: '/'
+        },
+        {
+            text: 'Dashboard',
+            href: '/dashboard'
+        },
+        {
+            text: 'Login',
+            href: '/login'
+        },
+        {
+            text: 'About',
+            href: '/about'
+        }
     ]
 
-    const [navActive, setNavActive] = useState(null);
-    const [activeIdx, setActiveIdx] = useState(-1);
+    const [activeIdx, setActiveIdx] = useState(-1)
+    const [showSideNav, setShowSideNav] = useState(false)
 
     return (
         <header className={styles.header}>
             <nav className={styles.nav}>
-                <Link href={'/'}>
-                    <a className={styles.anchor}>
-                        <h1>Project CMS</h1>
-                    </a>
+                <Link href={``}>
+                    <a className={styles.navLinks}>Project CMS</a>
                 </Link>
                 <div
-                    className={styles.nav_menubar}
-                    onClick={() => setNavActive(!navActive)}>
+                    className={styles.hamburger}
+                    onClick={() => setShowSideNav(!showSideNav)}
+                >
                     <div></div>
                     <div></div>
                     <div></div>
                 </div>
-                <div className={`${styles.nav_menuList} ${navActive ? styles.active : ""}`}>
+                <div className={`${styles.navItems} ${showSideNav ? styles.active : ""}`}>
                     {
                         MENU_LIST.map((menu, idx) => (
                             <div
                                 onClick={() => {
-                                    setNavActive(false)
                                     setActiveIdx(idx)
                                 }}
-                                key={menu.text}
                             >
-                                <NavItem active={activeIdx === idx} {...menu} />
+                                <NavItem active={idx === activeIdx}   {...menu} />
                             </div>
                         ))
+
                     }
                 </div>
             </nav>
