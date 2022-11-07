@@ -46,3 +46,7 @@
     outline: none;
     box-sizing: border-box;
   }
+
+  body{
+    background-color: #f8fafc;
+  }

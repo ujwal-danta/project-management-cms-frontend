@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Mono:wght@100;200;300;400;500;600&display=swap');
+
 .header{
   position: sticky;
   top: 0;
@@ -10,12 +12,18 @@
   justify-content: space-between;
   padding: 16px;
   align-items: center;
+  font-family: 'Noto Sans Mono', monospace;
 }
 
 .navLinks{
   text-decoration: none;
   color: inherit;
   overflow: hidden;
+}
+
+.navLinks.logo{
+  font-size: 20px;
+  font-weight: 400;
 }
 
 .navLinks:hover{

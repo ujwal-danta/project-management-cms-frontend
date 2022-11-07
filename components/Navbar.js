@@ -30,7 +30,7 @@ export default function Navbar() {
         <header className={styles.header}>
             <nav className={styles.nav}>
                 <Link href={``}>
-                    <a className={styles.navLinks}>Project CMS</a>
+                    <a className={`${styles.navLinks} ${styles.logo}`}>Project CMS</a>
                 </Link>
                 <div
                     className={styles.hamburger}
