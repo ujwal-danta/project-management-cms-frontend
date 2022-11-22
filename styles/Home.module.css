@@ -1,0 +1,12 @@
+.container{
+    display: flex;
+}
+
+.filter{
+    background-color: #5098fc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 130px;
+    border-radius: 3px;
+}
