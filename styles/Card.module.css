@@ -34,6 +34,7 @@ font-weight: 300;
 
 .tag_container{
 display: flex;
+flex-wrap: wrap;
 }
 
 .tags{
@@ -44,4 +45,11 @@ font-size: 14px;
 border-radius: 4px;
 padding: 1px 5px;
 margin: 5px;
+}
+
+.links{
+    text-transform: capitalize;
+    margin: 5px 15px;
+    display: flex;
+    justify-content: space-between;
 }

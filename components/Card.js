@@ -3,6 +3,7 @@ import styles from '../styles/Card.module.css'
 import Image from 'next/image'
 import image from '../designs/Screenshot (99).png'
 import Tag from './Tag'
+import Link from 'next/link'
 
 const Card = () => {
     return (
@@ -21,6 +22,14 @@ const Card = () => {
                 <Tag />
                 <Tag />
                 <Tag />
+            </div>
+            <div className={styles.links}>
+                <Link href={"#"}>
+                    <a>Github</a>
+                </Link>
+                <Link href={"#"}>
+                    <a>Site</a>
+                </Link>
             </div>
         </div>
     )
