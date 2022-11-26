@@ -9,10 +9,10 @@
 
 .form{
 height: auto;
-width: 400px;
+width: 60vw;
 background-color: white;
 box-shadow: 0 1px 3px 0 rgba(0,0,0,.1);
-padding: 35px;
+padding: 35px 50px;
 }
 
 .heading{
@@ -39,6 +39,17 @@ font-weight: 500;
     cursor: pointer;
     font-family: 'Poppins', sans-serif;
     font-weight: 500;
+    letter-spacing: 2px;
 }
 
+.btn:hover{
+    font-weight: 600;
+}
+
+@media screen and (max-width: 600px){
+    .form{
+        width: 300px;
+        padding: 35px;
+        }
+}
 

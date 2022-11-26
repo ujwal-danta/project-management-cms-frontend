@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Mono:wght@100;200;300;400;500;600&family=Poppins:wght@200;300;400;500;700&display=swap');
+
 :root {
     --primary-100: #e6f0ff;
     --primary-200: #b4d3fe;
@@ -49,4 +51,9 @@
 
   body{
     background-color: #f8fafc;
+  }
+
+  b{
+    font-weight: 300;
+    font-family: 'Poppins', sans-serif;  
   }

@@ -59,6 +59,7 @@ cursor: pointer;
 
 .navItems.active{
   right: 0;
+  background-color: #f8fafc;
 }
 
 
@@ -94,4 +95,8 @@ cursor: pointer;
   width: 100%;
  }
  
+}
+
+@media screen and (max-width: 768px){
+
 }
