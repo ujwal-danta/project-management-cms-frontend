@@ -1,11 +1,13 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Layout from '../components/Layout'
 import styles from '../styles/Dashboard.module.css'
 import Image from 'next/image'
 import img from '../designs/ujwal.jpg'
+import { TagsInput } from "react-tag-input-component";
 
 
 const dashboard = () => {
+    const [selected, setSelected] = useState(["papaya"]);
     return (
         <Layout>
             <div className={styles.dashboard_container}>
@@ -23,7 +25,44 @@ const dashboard = () => {
                     </div>
                 </div>
                 <div className={styles.main_container}>
+                    <form className={styles.form}>
+                        <div className={styles.form_element}>
+                            <label>Add Title</label> <br />
+                            <input type="text" className={styles.input} />
+                        </div>
 
+                        <div className={styles.form_element}>
+                            <label>Add Tags</label> <br />
+                            <TagsInput
+                                value={selected}
+                                onChange={setSelected}
+                                name="fruits"
+                                placeHolder="enter fruits"
+                            />
+                        </div>
+
+                        <div className={styles.form_element}>
+                            <label>Add Image</label> <br />
+                            <input type="text" className={styles.input} />
+                        </div>
+
+                        <div className={styles.form_element}>
+                            <label>Add Github Link</label> <br />
+                            <input type="text" className={styles.input} />
+                        </div>
+
+                        <div className={styles.form_element}>
+                            <label>Add Site Link</label> <br />
+                            <input type="text" className={styles.input} />
+                        </div>
+
+                        <div>
+                            <button className={styles.btn}>
+                                SUBMIT
+                            </button>
+                        </div>
+
+                    </form>
                 </div>
 
             </div>
