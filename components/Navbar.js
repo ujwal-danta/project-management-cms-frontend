@@ -48,7 +48,7 @@ export default function Navbar() {
                                     setActiveIdx(idx)
                                 }}
                             >
-                                <NavItem active={idx === activeIdx}   {...menu} />
+                                <NavItem active={idx === activeIdx} key={idx}  {...menu} />
                             </div>
                         ))
 

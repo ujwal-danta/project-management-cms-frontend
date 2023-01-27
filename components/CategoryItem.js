@@ -1,8 +1,12 @@
 import React from 'react'
 import styles from '../styles/CategoryItem.module.css'
-const CategoryItem = () => {
+const CategoryItem = ({ data }) => {
+    const str = data;
+    const str2 = str.charAt(0).toUpperCase() + str.slice(1);
     return (
-        <div className={styles.container}>CategoryItem</div>
+        <div className={styles.container}>
+            {str2}
+        </div>
     )
 }
 

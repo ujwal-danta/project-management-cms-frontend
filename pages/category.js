@@ -7,7 +7,7 @@ import { TagsInput } from "react-tag-input-component";
 import Link from 'next/link'
 
 
-const dashboard = () => {
+const category = () => {
     const [selected, setSelected] = useState(["JavaScript"]);
     return (
         <Layout>
@@ -22,17 +22,14 @@ const dashboard = () => {
                         </div>
                     </div>
                     <div className={styles.add_items}>
-                        <select name="cars" id="cars" className={styles.select}>
-                            <option value="volvo">ADD AN ITEM</option>
-                            <option value="saab">UPDATE</option>
-                            <option value="opel">DELETE</option>
-                        </select>
+                        <Link href={"/dashboard"}>
+                            <p>ADD ITEM</p>
+                        </Link>
                     </div>
                     <div className={styles.add_items}>
-                        <select name="cars" id="cars" className={styles.select}>
-                            <option value="volvo">ADD CATEGORY</option>
-                            <option value="opel">DELETE</option>
-                        </select>
+                        <Link href={"/category"}>
+                            <p>ADD CATEGORY</p>
+                        </Link>
                     </div>
                 </div>
                 <div className={styles.main_container}>
@@ -81,4 +78,4 @@ const dashboard = () => {
     )
 }
 
-export default dashboard
+export default category

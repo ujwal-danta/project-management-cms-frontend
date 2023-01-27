@@ -5,6 +5,23 @@ import Card from '../components/Card'
 
 
 export default function Home() {
+  const CATEGORY_LIST = [
+    {
+      text: 'Node js',
+    },
+    {
+      text: 'Javascript',
+    },
+    {
+      text: 'Bootstrap',
+    },
+    {
+      text: 'java',
+    }
+  ]
+
+
+
   return (
     <Layout>
       <div className={styles.container}>
@@ -13,24 +30,11 @@ export default function Home() {
             <p>Filter by Course</p>
           </div>
           <div className={styles.categories}>
-            <CategoryItem />
-            <CategoryItem />
-            <CategoryItem />
-            <CategoryItem />
-            <CategoryItem />
-            <CategoryItem />
-            <CategoryItem />
-            <CategoryItem />
-            <CategoryItem />
-            <CategoryItem />
-            <CategoryItem />
-            <CategoryItem />
-            <CategoryItem />
-            <CategoryItem />
-            <CategoryItem />
-            <CategoryItem />
-            <CategoryItem />
-            <CategoryItem />
+            {
+              CATEGORY_LIST.map((category, index) => <CategoryItem key={index} data={category.text} />
+              )
+            }
+
           </div>
         </div>
         <div className={styles.card_container}>
