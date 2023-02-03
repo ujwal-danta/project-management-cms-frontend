@@ -5,6 +5,8 @@ import Image from 'next/image'
 import img from '../designs/ujwal.jpg'
 import { TagsInput } from "react-tag-input-component";
 import Link from 'next/link'
+import { AiOutlineFundProjectionScreen } from 'react-icons/ai'
+import { BiCategory } from 'react-icons/bi'
 
 
 const dashboard = () => {
@@ -26,22 +28,22 @@ const dashboard = () => {
                     <ul className={styles.main_menu}>
                         <li className={styles.projects}>
                             <Link href={'#'}>
-                                <a>Projects</a>
+                                <a><AiOutlineFundProjectionScreen /> Projects</a>
                             </Link>
                             <ul className={styles.sub_menu}>
-                                <li>Add a project</li>
-                                <li>Delete a project</li>
-                                <li>Update a project</li>
+                                <li><a href="#">Add a project</a></li>
+                                <li><a href="#">Update a project</a></li>
+                                <li><a href="#">Delete a project</a></li>
                             </ul>
                         </li>
 
                         <li className={styles.categories}>
                             <Link href={'#'}>
-                                <a>Categories</a>
+                                <a> <BiCategory /> Categories</a>
                             </Link>
                             <ul className={styles.sub_menu}>
-                                <li>Add a category</li>
-                                <li>Delete a category</li>
+                                <li><a href="#">Add a Category</a></li>
+                                <li><a href="#">Delete a Category</a></li>
                             </ul>
                         </li>
 

@@ -98,12 +98,30 @@ padding: 0;
     display: block;
     text-decoration: none;
     padding: 10px;
+    font-size: large;
     color: #000;
+    font-family: 'Poppins', sans-serif;
 }
 
 .main_menu a:hover {
     background-color: #C5C5C5;
 }
+
+.main_menu li:hover .sub_menu{
+    display: block;
+
+}
+
+.sub_menu{
+    display: none;
+    transition: all 0.5s ease-out;
+}
+
+.sub_menu a{
+    background-color: rgb(206, 205, 205);
+}
+
+
 
 @media only screen and (max-width: 900px) {
 
