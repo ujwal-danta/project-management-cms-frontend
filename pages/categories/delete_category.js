@@ -1,15 +1,15 @@
 import React, { useState } from 'react'
-import Layout from '../components/Layout'
-import styles from '../styles/Dashboard.module.css'
+import Layout from '../../components/Layout'
+import styles from '../../styles/Dashboard.module.css'
 import Image from 'next/image'
-import img from '../designs/ujwal.jpg'
+import img from '../../designs/ujwal.jpg'
 import { TagsInput } from "react-tag-input-component";
 import Link from 'next/link'
 import { AiOutlineFundProjectionScreen } from 'react-icons/ai'
 import { BiCategory } from 'react-icons/bi'
 
 
-const dashboard = () => {
+const delete_category = () => {
     const [selected, setSelected] = useState(["JavaScript"]);
     return (
         <Layout>
@@ -33,7 +33,7 @@ const dashboard = () => {
                             </Link>
                             <ul className={styles.sub_menu}>
                                 <li>
-                                    <Link href={'/dashboard'}>
+                                    <Link href={'/projects/add_project'}>
                                         <a>Add a project</a>
                                     </Link>
                                 </li>
@@ -44,7 +44,9 @@ const dashboard = () => {
 
                                 </li>
                                 <li>
-                                    <a href="#">Delete a project</a>
+                                    <Link href={'/projects/delete_project'}>
+                                        <a>Delete a project</a>
+                                    </Link>
                                 </li>
                             </ul>
                         </li>
@@ -54,8 +56,16 @@ const dashboard = () => {
                                 <a> <BiCategory /> Categories</a>
                             </Link>
                             <ul className={styles.sub_menu}>
-                                <li><a href="#">Add a Category</a></li>
-                                <li><a href="#">Delete a Category</a></li>
+                                <li>
+                                    <Link href={'/categories/add_category'}>
+                                        <a>Add a project</a>
+                                    </Link>
+                                </li>
+                                <li>
+                                    <Link href={'/categories/delete_category'}>
+                                        <a>Delete a project</a>
+                                    </Link>
+                                </li>
                             </ul>
                         </li>
 
@@ -64,7 +74,8 @@ const dashboard = () => {
 
                 </div>
                 <div className={styles.main_container}>
-                    <form className={styles.form}>
+
+                    {/* <form className={styles.form}>
                         <h1>Add an Item</h1>
                         <hr />
                         <div className={styles.form_element}>
@@ -103,7 +114,8 @@ const dashboard = () => {
                             </button>
                         </div>
 
-                    </form>
+                    </form> */}
+
                 </div>
 
             </div>
@@ -111,4 +123,4 @@ const dashboard = () => {
     )
 }
 
-export default dashboard
+export default delete_category

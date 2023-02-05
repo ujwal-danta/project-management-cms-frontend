@@ -1,9 +1,11 @@
 import Link from 'next/link'
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import NavItem from './NavItem'
 import styles from '../styles/Navbar.module.css'
+import { UserData } from '../context/context'
 
 export default function Navbar() {
+    const { loggedIn, setLoggedIn } = useContext(UserData)
     const MENU_LIST = [
         {
             text: 'Home',
@@ -11,10 +13,10 @@ export default function Navbar() {
         },
         {
             text: 'Dashboard',
-            href: '/dashboard'
+            href: '/projects/add_project'
         },
         {
-            text: 'Login',
+            text: loggedIn ? 'Logout' : 'Login',
             href: '/login'
         },
         {
@@ -29,7 +31,7 @@ export default function Navbar() {
     return (
         <header className={styles.header}>
             <nav className={styles.nav}>
-                <Link href={``}>
+                <Link href={`/`}>
                     <a className={`${styles.navLinks} ${styles.logo}`}>Project CMS</a>
                 </Link>
                 <div
@@ -43,9 +45,10 @@ export default function Navbar() {
                 <div className={`${styles.navItems} ${showSideNav ? styles.active : ""}`}>
                     {
                         MENU_LIST.map((menu, idx) => (
-                            <div
+                            <div key={idx}
                                 onClick={() => {
                                     setActiveIdx(idx)
+
                                 }}
                             >
                                 <NavItem active={idx === activeIdx} key={idx}  {...menu} />
