@@ -4,14 +4,16 @@ import styles from '../styles/Form.module.css'
 import { UserData } from '../context/context'
 import { useRouter } from 'next/router'
 const login = () => {
-    const { loggedIn, setLoggedIn, email, setEmail, password, setPassword } = useContext(UserData)
     const router = useRouter()
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
 
 
     const handleSubmit = (e) => {
         e.preventDefault()
         if (email === "ujwaldanta@gmail.com" && password === "ujwalkumardanta786") {
-            setLoggedIn(true)
+            localStorage.setItem('email', true)
+            localStorage.setItem('password', true)
             router.push('/projects/add_project')
         }
         else {

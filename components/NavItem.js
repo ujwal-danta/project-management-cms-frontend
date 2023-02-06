@@ -1,20 +1,19 @@
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { UserData } from '../context/context'
 import styles from '../styles/Navbar.module.css'
 export default function NavItem({ active, text, href }) {
-    const { loggedIn, setLoggedIn } = useContext(UserData)
     const router = useRouter()
     const handleLogout = () => {
-        setLoggedIn(false)
-        router.push('/login')
+        localStorage.clear()
+        router.push('/')
     }
-    if (text === "Login") {
+    if (text === "Logout") {
         return (
             <>
                 <Link href={href}>
-                    <a className={`${styles.navLinks}`}>
+                    <a className={`${styles.navLinks}`} onClick={handleLogout}>
                         <span className={styles.underline}>{text}</span>
                     </a>
                 </Link>
@@ -25,7 +24,7 @@ export default function NavItem({ active, text, href }) {
         return (
             <>
                 <Link href={href}>
-                    <a className={`${styles.navLinks}`} onClick={handleLogout}>
+                    <a className={`${styles.navLinks}`}>
                         <span className={styles.underline}>{text}</span>
                     </a>
                 </Link>

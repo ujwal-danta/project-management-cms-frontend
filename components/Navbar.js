@@ -1,11 +1,18 @@
 import Link from 'next/link'
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import NavItem from './NavItem'
 import styles from '../styles/Navbar.module.css'
 import { UserData } from '../context/context'
 
 export default function Navbar() {
-    const { loggedIn, setLoggedIn } = useContext(UserData)
+
+    const [loggedIn, setLoggedIn] = useState(false)
+    useEffect(() => {
+        if (localStorage.getItem('email')) {
+            setLoggedIn(true)
+        }
+    }, [])
+
     const MENU_LIST = [
         {
             text: 'Home',
