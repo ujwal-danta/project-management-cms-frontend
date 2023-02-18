@@ -12,11 +12,31 @@ import { BiCategory } from 'react-icons/bi'
 const add_project = () => {
     const [loggedIn, setLoggedIn] = useState(false)
     const [selected, setSelected] = useState(["JavaScript"]);
+    const [userData, setUserData] = useState({
+        title: " ",
+        tags: [],
+        image: " ",
+        githubLink: " ",
+        siteLink: " "
+    })
+
     useEffect(() => {
         if (localStorage.getItem('email')) {
             setLoggedIn(true)
         }
-    }, [])
+        console.log(userData)
+    }, [userData])
+
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        console.log(selected)
+        setUserData({ ...userData, tags: selected })
+        console.log('form submitted')
+    }
+
+
+
+
     return (
         <>
             <Layout>
@@ -81,12 +101,12 @@ const add_project = () => {
 
                     </div>
                     <div className={styles.main_container}>
-                        <form className={styles.form}>
+                        <form className={styles.form} onSubmit={handleSubmit}>
                             <h1>Add an Item</h1>
                             <hr />
                             <div className={styles.form_element}>
                                 <label>Add Title</label> <br />
-                                <input type="text" className={styles.input} />
+                                <input type="text" className={styles.input} onChange={(e) => setUserData({ ...userData, title: e.target.value })} />
                             </div>
 
                             <div className={styles.form_element}>
@@ -101,7 +121,11 @@ const add_project = () => {
 
                             <div className={styles.form_element}>
                                 <label>Add Image</label> <br />
-                                <input type="text" className={styles.input} />
+                                <input
+                                    type="file"
+                                    className={styles.input}
+                                    onChange={(e) => setUserData({ ...userData, image: e.target.value })}
+                                />
                             </div>
 
                             <div className={styles.form_element}>

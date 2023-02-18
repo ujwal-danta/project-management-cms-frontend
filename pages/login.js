@@ -1,7 +1,6 @@
 import React, { useContext, useState } from 'react'
 import Layout from '../components/Layout'
 import styles from '../styles/Form.module.css'
-import { UserData } from '../context/context'
 import { useRouter } from 'next/router'
 const login = () => {
     const router = useRouter()

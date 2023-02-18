@@ -1,7 +1,6 @@
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import React, { useContext, useEffect } from 'react'
-import { UserData } from '../context/context'
 import styles from '../styles/Navbar.module.css'
 export default function NavItem({ active, text, href }) {
     const router = useRouter()

@@ -2,7 +2,7 @@ import Link from 'next/link'
 import React, { useContext, useEffect, useState } from 'react'
 import NavItem from './NavItem'
 import styles from '../styles/Navbar.module.css'
-import { UserData } from '../context/context'
+
 
 export default function Navbar() {
 
