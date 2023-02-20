@@ -13,23 +13,38 @@ const add_project = () => {
     const [loggedIn, setLoggedIn] = useState(false)
     const [selected, setSelected] = useState(["JavaScript"]);
     const [userData, setUserData] = useState({
-        title: " ",
+        title: "",
         tags: [],
-        image: " ",
-        githubLink: " ",
-        siteLink: " "
+        image: "",
+        githubLink: "",
+        siteLink: ""
     })
 
     useEffect(() => {
         if (localStorage.getItem('email')) {
             setLoggedIn(true)
         }
-        console.log(userData)
+
     }, [userData])
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        console.log(selected)
+        if (!userData.title || !userData.tags || !userData.image || !userData.githubLink || !userData.siteLink) {
+            const formData = new FormData()
+            formData.append('title', userData.title)
+            formData.append('tags', userData.tags)
+            formData.append('image', userData.image)
+            formData.append('githubLink', userData.githubLink)
+            formData.append('siteLink', userData.siteLink)
+            fetch("http://localhost:4001/", {
+                method: 'POST',
+                body: formData
+            })
+                .then(response => response.json())
+                .then(result => console.log(result))
+                .catch(err => console.log(err))
+
+        }
         setUserData({ ...userData, tags: selected })
         console.log('form submitted')
     }
@@ -124,7 +139,7 @@ const add_project = () => {
                                 <input
                                     type="file"
                                     className={styles.input}
-                                    onChange={(e) => setUserData({ ...userData, image: e.target.value })}
+                                    onChange={(e) => setUserData({ ...userData, image: e.target.files[0] })}
                                 />
                             </div>
 
