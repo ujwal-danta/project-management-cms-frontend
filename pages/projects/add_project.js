@@ -36,7 +36,7 @@ const add_project = () => {
             formData.append('image', userData.image)
             formData.append('githubLink', userData.githubLink)
             formData.append('siteLink', userData.siteLink)
-            fetch("http://localhost:4001/", {
+            fetch("http://localhost:4001/api/projects", {
                 method: 'POST',
                 body: formData
             })
@@ -116,7 +116,7 @@ const add_project = () => {
 
                     </div>
                     <div className={styles.main_container}>
-                        <form className={styles.form} onSubmit={handleSubmit}>
+                        <form className={styles.form} onSubmit={handleSubmit} encType="multipart/form-data">
                             <h1>Add an Item</h1>
                             <hr />
                             <div className={styles.form_element}>
