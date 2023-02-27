@@ -29,7 +29,8 @@ const add_project = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        if (!userData.title || !userData.tags || !userData.image || !userData.githubLink || !userData.siteLink) {
+        setUserData({ ...userData, tags: selected })
+        if (userData.title && userData.tags && userData.image && userData.githubLink && userData.siteLink) {
             const formData = new FormData()
             formData.append('title', userData.title)
             formData.append('tags', userData.tags)
@@ -43,10 +44,12 @@ const add_project = () => {
                 .then(response => response.json())
                 .then(result => console.log(result))
                 .catch(err => console.log(err))
-
+            console.log('form submitted')
         }
-        setUserData({ ...userData, tags: selected })
-        console.log('form submitted')
+        else {
+            alert("Please enter all the fields")
+        }
+
     }
 
 
@@ -145,12 +148,20 @@ const add_project = () => {
 
                             <div className={styles.form_element}>
                                 <label>Add Github Link</label> <br />
-                                <input type="text" className={styles.input} />
+                                <input
+                                    type="text"
+                                    className={styles.input}
+                                    onChange={(e) => setUserData({ ...userData, githubLink: e.target.value })}
+                                />
                             </div>
 
                             <div className={styles.form_element}>
                                 <label>Add Site Link</label> <br />
-                                <input type="text" className={styles.input} />
+                                <input
+                                    type="text"
+                                    className={styles.input}
+                                    onChange={(e) => setUserData({ ...userData, siteLink: e.target.value })}
+                                />
                             </div>
 
                             <div>

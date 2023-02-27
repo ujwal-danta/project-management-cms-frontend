@@ -5,31 +5,29 @@ import image from '../designs/Screenshot (99).png'
 import Tag from './Tag'
 import Link from 'next/link'
 
-const Card = () => {
+const Card = ({ project }) => {
+
+    const { title, tags, githubLink, siteLink } = project
+
     return (
         <div className={styles.container}>
             <div className={styles.image_container}>
                 <Image
                     src={image}
                     alt='Not Found'
-                    className="image"
                 />
             </div>
             <div className={styles.title_container}>
-                <p>Card Title</p>
+                <p>{title}</p>
             </div>
             <div className={styles.tag_container}>
-                <Tag />
-                <Tag />
-                <Tag />
+                {
+                    tags.map(tag => (<Tag tag={tag} />))
+                }
             </div>
             <div className={styles.links}>
-                <Link href={"#"}>
-                    <a>Github</a>
-                </Link>
-                <Link href={"#"}>
-                    <a>Site</a>
-                </Link>
+                <a href={githubLink} target='_blank'>Github</a>
+                <a href={siteLink} target='_blank'>Site</a>
             </div>
         </div>
     )
