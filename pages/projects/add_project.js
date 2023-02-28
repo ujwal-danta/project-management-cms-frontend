@@ -24,12 +24,14 @@ const add_project = () => {
         if (localStorage.getItem('email')) {
             setLoggedIn(true)
         }
-
-    }, [userData])
+        // console.log('useEffect called')
+        // console.log(selected)
+        setUserData({ ...userData, tags: selected })
+    }, [selected])
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        setUserData({ ...userData, tags: selected })
+        // setUserData({ ...userData, tags: selected })
         if (userData.title && userData.tags && userData.image && userData.githubLink && userData.siteLink) {
             const formData = new FormData()
             formData.append('title', userData.title)
@@ -37,6 +39,10 @@ const add_project = () => {
             formData.append('image', userData.image)
             formData.append('githubLink', userData.githubLink)
             formData.append('siteLink', userData.siteLink)
+            console.log('userData - ', userData)
+            // for (const value of formData.values()) {
+            //     console.log('element - ', value)
+            // }
             fetch("http://localhost:4001/api/projects", {
                 method: 'POST',
                 body: formData

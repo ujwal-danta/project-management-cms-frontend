@@ -4,10 +4,20 @@ import Image from 'next/image'
 import image from '../designs/Screenshot (99).png'
 import Tag from './Tag'
 import Link from 'next/link'
+import { v4 as uuid } from 'uuid';
 
 const Card = ({ project }) => {
-
     const { title, tags, githubLink, siteLink } = project
+
+    const temp = tags[0].split(",")
+
+    const generateId = () => {
+        const unique_id = uuid();
+        const small_id = unique_id.slice(0, 8)
+        return small_id
+    }
+
+
 
     return (
         <div className={styles.container}>
@@ -22,7 +32,7 @@ const Card = ({ project }) => {
             </div>
             <div className={styles.tag_container}>
                 {
-                    tags.map(tag => (<Tag tag={tag} />))
+                    temp.map(tag => (<Tag tag={tag} key={generateId()} />))
                 }
             </div>
             <div className={styles.links}>

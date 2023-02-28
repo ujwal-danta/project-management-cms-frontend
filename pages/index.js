@@ -56,7 +56,7 @@ export default function Home() {
         </div>
         <div className={styles.card_container}>
           {
-            !projects.length ? <h1>Loading</h1> : projects.map((project) => (<Card project={project} />))
+            !projects.length ? <h1>Loading</h1> : projects.map((project) => (<Card project={project} key={project._id} />))
           }
         </div>
       </div>
