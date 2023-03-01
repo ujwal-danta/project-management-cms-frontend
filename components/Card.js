@@ -1,15 +1,20 @@
 import React from 'react'
 import styles from '../styles/Card.module.css'
 import Image from 'next/image'
-import image from '../designs/Screenshot (99).png'
+// import image from '../designs/Screenshot (99).png'
 import Tag from './Tag'
-import Link from 'next/link'
 import { v4 as uuid } from 'uuid';
 
 const Card = ({ project }) => {
-    const { title, tags, githubLink, siteLink } = project
+    const { title, tags, image, githubLink, siteLink } = project
 
     const temp = tags[0].split(",")
+    console.log(temp)
+    for (let i = 0; i < temp.length; i++) {
+        var str = temp[i]
+        var newStr = str.replace(/[\[\]']+/g, '')
+        temp[i] = newStr.replace(/['"]+/g, '')
+    }
 
     const generateId = () => {
         const unique_id = uuid();
@@ -25,6 +30,8 @@ const Card = ({ project }) => {
                 <Image
                     src={image}
                     alt='Not Found'
+                    layout='fill'
+                    className={styles.image}
                 />
             </div>
             <div className={styles.title_container}>
