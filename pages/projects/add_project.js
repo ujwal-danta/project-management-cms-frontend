@@ -41,24 +41,25 @@ const add_project = () => {
             formData.append('image', userData.image)
             formData.append('githubLink', userData.githubLink)
             formData.append('siteLink', userData.siteLink)
-            console.log('userData - ', userData)
-            // for (const value of formData.values()) {
-            //     console.log('element - ', value)
-            // }
-            alert("Please wait !!! Posting data......")
+            setTimeout(() => {
+                alert("Please wait !!! Posting data......")
+            }, 1000)
             fetch("http://localhost:4001/api/projects", {
                 method: 'POST',
                 body: formData
             })
                 .then(response => {
-                    response.json()
+                    return response.json()
                 })
                 .then(result => {
-                    console.log(result)
-                    router.push('/')
+                    if (result.error) {
+                        alert("Title taken. Please try again with a different one")
+                    }
+                    else {
+                        router.push('/')
+                    }
                 })
                 .catch(err => console.log(err))
-            console.log('form submitted')
         }
         else {
             alert("Please enter all the fields")

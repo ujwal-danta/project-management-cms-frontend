@@ -4,12 +4,13 @@ import Image from 'next/image'
 // import image from '../designs/Screenshot (99).png'
 import Tag from './Tag'
 import { v4 as uuid } from 'uuid';
+import { useRouter } from 'next/router';
 
 const Card = ({ project }) => {
-    const { title, tags, image, githubLink, siteLink } = project
-
+    const { title, tags, image, githubLink, siteLink, _id } = project
+    const admin = localStorage.getItem('email')
+    const router = useRouter()
     const temp = tags[0].split(",")
-    console.log(temp)
     for (let i = 0; i < temp.length; i++) {
         var str = temp[i]
         var newStr = str.replace(/[\[\]']+/g, '')
@@ -20,6 +21,10 @@ const Card = ({ project }) => {
         const unique_id = uuid();
         const small_id = unique_id.slice(0, 8)
         return small_id
+    }
+
+    const handleSubmit = () => {
+        router.push(`/projects/${_id}`)
     }
 
 
@@ -45,6 +50,16 @@ const Card = ({ project }) => {
             <div className={styles.links}>
                 <a href={githubLink} target='_blank'>Github</a>
                 <a href={siteLink} target='_blank'>Site</a>
+            </div>
+            <div className={styles.admin_btn}>
+                {admin &&
+                    <button className={`${styles.admin_btns} ${styles.update}`} onClick={handleSubmit}>
+                        Update
+                    </button>}
+                {admin &&
+                    <button className={`${styles.admin_btns} ${styles.delete}`} onClick={handleSubmit}>
+                        Delete
+                    </button>}
             </div>
         </div>
     )

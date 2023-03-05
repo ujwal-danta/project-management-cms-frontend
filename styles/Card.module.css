@@ -54,6 +54,46 @@ margin: 5px;
     display: flex;
     justify-content: space-between;
 }
+
+.admin_btn{
+    margin: 5px 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.admin_btns{
+  margin: 0 5px;
+  padding: 5px;
+  flex: 1;
+  font-size: 16px;
+  font-weight:400;
+  display:inline-block;
+  color:#FFF;
+  border-radius: .25em;
+  text-shadow: -1px -1px 0px rgba(0,0,0,0.4);
+  border: none;
+}
+
+.admin_btns:hover{
+    transform:scale(1.02);
+    box-shadow:2px 2px 5px rgba(0,0,0,0.20), inset 0 0 0 99999px rgba(0,0,0,0.2);
+    cursor: pointer;
+  }
+  
+
+
+
+.admin_btns.update{
+    background-color: rgb(52, 152, 219);
+}
+
+.admin_btns.delete{
+    background-color:rgb(192, 57, 43);
+}
+
+
+
 /* 
 @media only screen and (max-width: 900px) {
     .container {
