@@ -130,6 +130,10 @@ padding: 0;
     height: 100vh;
 }
 
+.input.input_img{
+    background-color: rgb(210, 234, 241);
+    cursor: pointer;
+}
 
 @media only screen and (max-width: 900px) {
 
