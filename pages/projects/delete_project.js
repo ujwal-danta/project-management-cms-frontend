@@ -37,12 +37,12 @@ const delete_project = () => {
                     <a>Add a project</a>
                   </Link>
                 </li>
-                <li>
+                {/* <li>
                   <Link href={'/projects/update_project'}>
                     <a>Update a project</a>
                   </Link>
 
-                </li>
+                </li> */}
                 <li>
                   <Link href={'/projects/delete_project'}>
                     <a>Delete a project</a>

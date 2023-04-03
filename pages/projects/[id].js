@@ -51,35 +51,25 @@ const update_project = () => {
 
     const handleSubmit = (e) => {
         console.log('submitted')
-        console.log(selected)
         e.preventDefault()
-        // setUserData({ ...userData, tags: selected })
+        console.log('updated data - ', userData)
         if (userData.title && userData.tags && userData.image && userData.githubLink && userData.siteLink) {
-            const formData = new FormData()
-            formData.append('title', userData.title)
-            formData.append('tags', userData.tags)
-            formData.append('image', userData.image)
-            formData.append('githubLink', userData.githubLink)
-            formData.append('siteLink', userData.siteLink)
-            // setTimeout(() => {
-            //     alert("Please wait !!! Posting data......")
-            // }, 1000)
-            // fetch("http://localhost:4001/api/projects", {
-            //     method: 'POST',
-            //     body: formData
-            // })
-            //     .then(response => {
-            //         return response.json()
-            //     })
-            //     .then(result => {
-            //         if (result.error) {
-            //             alert("Title taken. Please try again with a different one")
-            //         }
-            //         else {
-            //             router.push('/')
-            //         }
-            //     })
-            //     .catch(err => console.log(err))
+
+            fetch(`http://localhost:4001/api/projects/${id}`, {
+                method: 'PATCH',
+                headers: {
+                    "Content-type": "application/json"
+                },
+                body: JSON.stringify(userData)
+            })
+                .then(response => {
+                    return response.json()
+                })
+                .then(data => {
+                    console.log(data)
+                    alert("Succesfully Updated")
+                })
+
         }
         else {
             console.log(selected)
@@ -92,25 +82,7 @@ const update_project = () => {
 
 
     return (
-        // !loggedIn ?
-        //     <>
-        //         <div className={styles.empty}>
-        //             <h1> Please &nbsp;
-        //                 <Link href={'/login'}>
-        //                     Log In
-        //                 </Link>
-        //                 &nbsp;
-        //                 to access Dashboard</h1>
-        //             <br />
-        //             <p>
-        //                 Go back &nbsp;
-        //                 <Link href={'/'}>
-        //                     Home
-        //                 </Link>
-        //             </p>
-        //         </div>
-        //     </>
-        //     :
+
         <>
             <Layout>
                 <div className={styles.dashboard_container}>
