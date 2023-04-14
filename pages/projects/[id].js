@@ -13,7 +13,7 @@ import { useRouter } from 'next/router'
 const update_project = () => {
     const router = useRouter()
     const { id } = router.query
-    // const [loggedIn, setLoggedIn] = useState(false)
+    // const [demo, setDemo] = useState(0)
     const [userData, setUserData] = useState({
         title: "",
         tags: [],
@@ -22,11 +22,8 @@ const update_project = () => {
         siteLink: ""
     })
     const [selected, setSelected] = useState([]);
-
     useEffect(() => {
-        // if (localStorage.getItem('email')) {
-        //     setLoggedIn(true)
-        // }
+
         const getProject = async () => {
             const res = await fetch(`http://localhost:4001/api/projects/${id}`)
             const data = await res.json()
@@ -49,29 +46,48 @@ const update_project = () => {
             getProject()
     }, [id])
 
+
     const handleSubmit = (e) => {
         console.log('submitted')
         e.preventDefault()
-        console.log('updated data - ', userData)
-        if (userData.title && userData.tags && userData.image && userData.githubLink && userData.siteLink) {
-
+       let str = ""; 
+       for (let i=0;i<selected.length;i++){
+       str+=selected[i];
+       if(i<selected.length-1)
+       str+=','
+       }
+        console.log("Entering else if")
+        if (userData.title && selected.length && userData.image && userData.githubLink && userData.siteLink) {
+            console.log("Inside if")
+            console.log(userData.title)
+            console.log(userData.image)
+            console.log(userData.githubLink)
+            console.log(userData.siteLink)
             fetch(`http://localhost:4001/api/projects/${id}`, {
                 method: 'PATCH',
                 headers: {
                     "Content-type": "application/json"
                 },
-                body: JSON.stringify(userData)
+                body: JSON.stringify({
+                    title: userData.title,
+                    tags: [str],
+                    image: userData.image,
+                    githubLink: userData.githubLink,
+                    siteLink: userData.siteLink
+                })
             })
                 .then(response => {
+                    console.log("inside res.json()")
                     return response.json()
                 })
                 .then(data => {
-                    console.log(data)
+                    console.log("inside data")
                     alert("Succesfully Updated")
+                    router.push('/')
                 })
-
         }
         else {
+            console.log("Inside Else")
             console.log(selected)
             alert("Please enter all the fields")
         }
@@ -147,7 +163,7 @@ const update_project = () => {
                     </div>
                     <div className={styles.main_container}>
                         <form className={styles.form} onSubmit={handleSubmit} encType="multipart/form-data">
-                            <h1>Add an Item</h1>
+                            <h1>Update Item</h1>
                             <hr />
                             <div className={styles.form_element}>
                                 <label>Add Title</label> <br />

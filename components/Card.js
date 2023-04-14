@@ -10,8 +10,6 @@ const Card = ({ project }) => {
     const { title, tags, image, githubLink, siteLink, _id } = project
     const admin = localStorage.getItem('email')
     const router = useRouter()
-    console.log(title)
-    console.log("tags - ", tags)
     const temp = tags[0].split(",")
     for (let i = 0; i < temp.length; i++) {
         var str = temp[i]

@@ -8,6 +8,7 @@
  box-shadow:  0 1px 3px 0 rgba(0,0,0,.1);
  padding: 10px;
  height: fit-content;
+ overflow-wrap: break-word;
 }
 
 .image_container{
