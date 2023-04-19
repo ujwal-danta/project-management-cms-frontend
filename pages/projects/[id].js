@@ -56,34 +56,39 @@ const update_project = () => {
        if(i<selected.length-1)
        str+=','
        }
-        console.log("Entering else if")
+        // console.log("Entering else if")
         if (userData.title && selected.length && userData.image && userData.githubLink && userData.siteLink) {
-            console.log("Inside if")
-            console.log(userData.title)
-            console.log(userData.image)
-            console.log(userData.githubLink)
-            console.log(userData.siteLink)
+            // console.log("Inside if")
+            // console.log(userData.title)
+            // console.log(userData.image)
+            // console.log(userData.githubLink)
+            // console.log(userData.siteLink)
+            const formData = new FormData()
+            formData.append('title', userData.title)
+            formData.append('tags', [str])
+            formData.append('image', userData.image)
+            formData.append('githubLink', userData.githubLink)
+            formData.append('siteLink', userData.siteLink)
+            setTimeout(() => {
+                alert("Please wait !!! Updating data......")
+            }, 500)
             fetch(`http://localhost:4001/api/projects/${id}`, {
                 method: 'PATCH',
-                headers: {
-                    "Content-type": "application/json"
-                },
-                body: JSON.stringify({
-                    title: userData.title,
-                    tags: [str],
-                    image: userData.image,
-                    githubLink: userData.githubLink,
-                    siteLink: userData.siteLink
-                })
+                // headers:  {"Content-Type": "multipart/form-data"},
+                body: formData
             })
                 .then(response => {
-                    console.log("inside res.json()")
+                    // console.log("inside res.json()")
                     return response.json()
                 })
                 .then(data => {
-                    console.log("inside data")
-                    alert("Succesfully Updated")
+                    // console.log("inside data")
+                    // alert("Succesfully Updated")
                     router.push('/')
+                })
+                .catch(err=>{
+                    alert('An error occurred!!! Please retry...')
+                    console.log(err)
                 })
         }
         else {
@@ -130,11 +135,6 @@ const update_project = () => {
                                             <a>Update a project</a>
                                         </Link>
 
-                                    </li>
-                                    <li>
-                                        <Link href={'/projects/delete_project'}>
-                                            <a>Delete a project</a>
-                                        </Link>
                                     </li>
                                 </ul>
                             </li>
@@ -198,7 +198,7 @@ const update_project = () => {
                                 <input
                                     type="file"
                                     className={styles.input}
-                                    value={userData.image ? '' : userData.image}
+                                    // value={userData.image ? '' : userData.image}
                                     onChange={(e) => setUserData({ ...userData, image: e.target.files[0] })}
                                 />
                             </div>

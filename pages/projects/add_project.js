@@ -122,11 +122,6 @@ const add_project = () => {
                                             </Link>
 
                                         </li> */}
-                                        <li>
-                                            <Link href={'/projects/delete_project'}>
-                                                <a>Delete a project</a>
-                                            </Link>
-                                        </li>
                                     </ul>
                                 </li>
 

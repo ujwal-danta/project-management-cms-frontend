@@ -23,10 +23,21 @@ const Card = ({ project }) => {
         return small_id
     }
 
-    const handleSubmit = () => {
+    const handleSubmitEdit = () => {
         router.push(`/projects/${_id}`)
     }
-
+    
+   const handleSubmitDelete = ()=>{
+    fetch(`http://localhost:4001/api/projects/${_id}`,
+    {
+        method: 'DELETE'
+    })
+    .then(res=>{
+        alert('Successfully Deleted')
+        window.location.reload(false);
+    })
+    .catch(err=>console.log(err))
+   } 
 
 
     return (
@@ -37,6 +48,7 @@ const Card = ({ project }) => {
                     alt='Not Found'
                     layout='fill'
                     className={styles.image}
+                    priority={true}
                 />
             </div>
             <div className={styles.title_container}>
@@ -53,11 +65,11 @@ const Card = ({ project }) => {
             </div>
             <div className={styles.admin_btn}>
                 {admin &&
-                    <button className={`${styles.admin_btns} ${styles.update}`} onClick={handleSubmit}>
+                    <button className={`${styles.admin_btns} ${styles.update}`} onClick={handleSubmitEdit}>
                         Update
                     </button>}
                 {admin &&
-                    <button className={`${styles.admin_btns} ${styles.delete}`} onClick={handleSubmit}>
+                    <button className={`${styles.admin_btns} ${styles.delete}`} onClick={handleSubmitDelete}>
                         Delete
                     </button>}
             </div>
