@@ -1,10 +1,12 @@
 import React, { useState } from 'react'
 import Layout from '../components/Layout'
-import styles from '../styles/Dashboard.module.css'
+import styles from '../styles/Category.module.css'
 import Image from 'next/image'
 import img from '../designs/ujwal.jpg'
 import { TagsInput } from "react-tag-input-component";
 import Link from 'next/link'
+import { AiOutlineFundProjectionScreen } from 'react-icons/ai'
+import { BiCategory } from 'react-icons/bi'
 
 
 const category = () => {
@@ -21,56 +23,70 @@ const category = () => {
                             <p className={styles.text}>Hi Ujwal :) </p>
                         </div>
                     </div>
-                    <div className={styles.add_items}>
-                        <Link href={"/dashboard"}>
-                            <p>ADD ITEM</p>
-                        </Link>
-                    </div>
-                    <div className={styles.add_items}>
-                        <Link href={"/category"}>
-                            <p>ADD CATEGORY</p>
-                        </Link>
-                    </div>
+
+                    {/* side nav */}
+
+                    <ul className={styles.main_menu}>
+                        <li className={styles.projects}>
+                            <Link href={'#'}>
+                                <a><AiOutlineFundProjectionScreen /> Projects</a>
+                            </Link>
+                            <ul className={styles.sub_menu}>
+                                <li>
+                                    <Link href={'/projects/add_project'}>
+                                        <a>Add a project</a>
+                                    </Link>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li className={styles.categories}>
+                            <Link href={'#'}>
+                                <a> <BiCategory /> Categories</a>
+                            </Link>
+                            <ul className={styles.sub_menu}>
+                                <li>
+                                <Link href={'/category'}>
+                                                <a>Add/Delete Category</a>
+                                </Link>
+                                </li>
+                                
+                            </ul>
+                        </li>
+
+                    </ul>
+
+
                 </div>
                 <div className={styles.main_container}>
-                    <form className={styles.form}>
-                        <div className={styles.form_element}>
-                            <label>Add Title</label> <br />
-                            <input type="text" className={styles.input} />
-                        </div>
-
-                        <div className={styles.form_element}>
-                            <label>Add Tags</label> <br />
-                            <TagsInput
-                                value={selected}
-                                onChange={setSelected}
-                                name="fruits"
-                                placeHolder="Enter Tags"
-                            />
-                        </div>
-
-                        <div className={styles.form_element}>
-                            <label>Add Image</label> <br />
-                            <input type="text" className={styles.input} />
-                        </div>
-
-                        <div className={styles.form_element}>
-                            <label>Add Github Link</label> <br />
-                            <input type="text" className={styles.input} />
-                        </div>
-
-                        <div className={styles.form_element}>
-                            <label>Add Site Link</label> <br />
-                            <input type="text" className={styles.input} />
-                        </div>
-
-                        <div>
-                            <button className={styles.btn}>
-                                SUBMIT
-                            </button>
-                        </div>
-
-                    </form>
+                   <div className={styles.category_container}>
+                   <div className={styles.category}>
+                    <label>
+                        Add Category
+                    </label> 
+                    <div className={styles.add_container}>
+                        <input type="text" placeholder='Enter the name of category'/>
+                        <button className={styles.btn}> 
+                            Add Category
+                        </button>
+                    </div>
+                   </div>
+                   <div className={styles.category}>
+                    <label>
+                        Delete Category
+                    </label> 
+                    <div className={styles.add_container}>
+                    {/* <input type="text" placeholder='Enter the name of category'/> */}
+                    <select name="" id="">
+                        <option value="">JavaScript</option>
+                        <option value="">Java</option>
+                    </select>
+                        <button className={styles.btn}>
+                            Delete Category
+                        </button>
+                    </div>
+                   </div>
+                   </div>
                 </div>
 
             </div>

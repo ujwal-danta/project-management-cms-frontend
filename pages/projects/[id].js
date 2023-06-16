@@ -145,13 +145,8 @@ const update_project = () => {
                                 </Link>
                                 <ul className={styles.sub_menu}>
                                     <li>
-                                        <Link href={'/categories/add_category'}>
-                                            <a>Add a project</a>
-                                        </Link>
-                                    </li>
-                                    <li>
-                                        <Link href={'/categories/delete_category'}>
-                                            <a>Delete a project</a>
+                                        <Link href={'/category'}>
+                                            <a>Add/Delete Category</a>
                                         </Link>
                                     </li>
                                 </ul>
