@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Layout from '../components/Layout'
 import styles from '../styles/Category.module.css'
 import Image from 'next/image'
@@ -12,6 +12,19 @@ import { BiCategory } from 'react-icons/bi'
 const category = () => {
     const [selected, setSelected] = useState(["JavaScript"]);
     const [category,setCategory] = useState("")
+    const [allCategories,setAllCategories] = useState([])
+    const [deleteCategory,setDeleteCategory] = useState("")
+
+    useEffect(()=>{
+        const getAllCategories = async () => {
+            const res = await fetch('http://localhost:4001/api/categories')
+            const data = await res.json()
+            setAllCategories(data)
+            if(data.length)
+            setDeleteCategory(data[0].title)
+          }
+        getAllCategories()
+    },[])
 
     const handleSubmit = () => {
         fetch('http://localhost:4001/api/categories/addCategory', {
@@ -35,6 +48,10 @@ const category = () => {
                 console.log(err)
                 alert("Please enter an unique category (maxSize: 20)")
             })
+    }
+
+    const handleDelete = ()=> {
+        console.log("Delete ",deleteCategory)
     }
 
 
@@ -114,11 +131,22 @@ const category = () => {
                     </label> 
                     <div className={styles.add_container}>
                     {/* <input type="text" placeholder='Enter the name of category'/> */}
-                    <select name="" id="">
-                        <option value="">JavaScript</option>
-                        <option value="">Java</option>
+                    <select value={deleteCategory} onChange={(e)=>setDeleteCategory(e.target.value)}>
+                        {
+                            allCategories.map((category,index)=>{
+                                const str = category.title
+                                return (
+                                    <option value={str} key={index}>
+                                        {str.charAt(0).toUpperCase() + str.slice(1)}
+                                    </option>
+                                )
+                            })
+                        }
                     </select>
-                        <button className={styles.btn}>
+                        <button 
+                        className={styles.btn}
+                        onClick={handleDelete}
+                        >
                             Delete Category
                         </button>
                     </div>
