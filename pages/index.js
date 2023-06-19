@@ -3,39 +3,56 @@ import styles from '../styles/Home.module.css'
 import CategoryItem from '../components/CategoryItem'
 import Card from '../components/Card'
 import { useEffect, useState } from 'react'
+import { useRouter } from 'next/router'
 
 
 export default function Home() {
   const [projects, setProjects] = useState([])
+  const [categories,setCategories] = useState([])
+  const [search,setSearch] = useState("")
+
+const router = useRouter()
 
   useEffect(() => {
-
+    console.log("use effect called")
     const getAllProjects = async () => {
       const res = await fetch('http://localhost:4001/api/projects')
       const data = await res.json()
-      setProjects(data)
+      if(search)
+      {
+        // get the all projects with keyword Search
+        setProjects([])
+        const ans = []
+        for(const obj of data){
+          const str = obj.tags[0]
+          if(str.includes(search)){
+          ans.push(obj)
+          }
+        }
+        if(ans.length===0)
+        {
+          alert(`No Projects found under ${search}`)
+          setSearch("")
+        }
+        setProjects(ans)
+      }
+      else{
+        setProjects(data)
+      }
+    }
+
+    const getAllCategories = async () => {
+      const res = await fetch('http://localhost:4001/api/categories')
+      const data = await res.json()
+      setCategories(data)
     }
 
     getAllProjects()
+    getAllCategories()
+  }, [search])
 
-  }, [])
 
 
-
-  const CATEGORY_LIST = [
-    {
-      text: 'Node js',
-    },
-    {
-      text: 'Javascript',
-    },
-    {
-      text: 'Bootstrap',
-    },
-    {
-      text: 'java',
-    }
-  ]
 
 
 
@@ -48,10 +65,13 @@ export default function Home() {
           </div>
           <div className={styles.categories}>
             {
-              CATEGORY_LIST.map((category, index) => <CategoryItem key={index} data={category.text} />
+              categories.map((category, index) => <CategoryItem 
+              key={index} 
+              data={category.title} 
+              setSearch={setSearch}
+              />
               )
             }
-
           </div>
         </div>
         <div className={styles.card_container}>

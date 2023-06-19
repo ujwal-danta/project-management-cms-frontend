@@ -9,4 +9,10 @@
     padding: 8px 5px;
     background-color: #e6f0ff;
     color: grey;
+    cursor: pointer;
+}
+
+.container:hover{
+    background-color: #779dd5;
+    color: white;
 }

@@ -11,6 +11,35 @@ import { BiCategory } from 'react-icons/bi'
 
 const category = () => {
     const [selected, setSelected] = useState(["JavaScript"]);
+    const [category,setCategory] = useState("")
+
+    const handleSubmit = () => {
+        fetch('http://localhost:4001/api/categories/addCategory', {
+            method: 'POST',
+            body: JSON.stringify({
+            title : category
+            }),
+            headers: {
+              'Content-type': 'application/json; charset=UTF-8',
+            }
+            })
+            .then(res=>res.json())
+            .then(data=>{
+                if(data.error)
+                alert("Please enter an unique category (maxSize: 20)")
+                else
+                alert("Successfull")
+                console.log(data)
+            })
+            .catch(err=>{
+                console.log(err)
+                alert("Please enter an unique category (maxSize: 20)")
+            })
+    }
+
+
+
+
     return (
         <Layout>
             <div className={styles.dashboard_container}>
@@ -65,8 +94,16 @@ const category = () => {
                         Add Category
                     </label> 
                     <div className={styles.add_container}>
-                        <input type="text" placeholder='Enter the name of category'/>
-                        <button className={styles.btn}> 
+                        <input 
+                        type="text" 
+                        placeholder='Enter the name of category'
+                        value={category}
+                        onChange={(e)=>setCategory(e.target.value)}
+                        />
+                        <button 
+                        className={styles.btn}
+                        onClick={handleSubmit}
+                        > 
                             Add Category
                         </button>
                     </div>
