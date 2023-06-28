@@ -4,7 +4,7 @@
 }
 
 .filter{
-    background-color: #5098fc;
+    background-color: #0a60d7;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -31,17 +31,45 @@
 }
 
 
+.allProjects{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 130px;
+    border: 1px solid rgb(248, 248, 248);
+    word-wrap: break-word;
+    word-break: break-all;
+    padding: 8px 5px;
+    background-color: #e6f0ff;
+    background-color: white;
+    color: grey;
+    cursor: pointer;
+    transition-property: color;
+    transition-duration: 500ms;
+}
+
+.active{
+    border: 1.5px solid black;
+    border-radius: 3px;
+    background:rgba(0, 0, 0, 0.2);
+}
+
+.allProjects:hover{
+    color: black;
+}
+
+
 
 @media only screen and (max-width: 1000px) {
     .card_container{
-     grid-template-columns: auto auto;
+     grid-template-columns: 300px 300px;
     }
     .category_container{
      margin: 5px 10px;
  }
    }
 
-@media only screen and (max-width: 999px) {
+@media only screen and (max-width: 900px) {
    .card_container{
     grid-template-columns: auto;
    }

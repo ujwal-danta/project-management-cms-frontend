@@ -7,12 +7,21 @@
     word-wrap: break-word;
     word-break: break-all;
     padding: 8px 5px;
-    background-color: #e6f0ff;
+    /* background-color: #e6f0ff; */
+    background-color: white;
     color: grey;
     cursor: pointer;
+    border-radius: 3px;
+    transition-property: color;
+    transition-duration: 500ms;
+}
+
+.active{
+    border: 1.5px solid black;
+    border-radius: 3px;
+    background:rgba(0, 0, 0, 0.2);
 }
 
 .container:hover{
-    background-color: #779dd5;
-    color: white;
+    color: black;
 }

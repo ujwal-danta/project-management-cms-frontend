@@ -41,8 +41,9 @@ const category = () => {
                 if(data.error)
                 alert("Please enter an unique category (maxSize: 20)")
                 else
-                alert("Successfull")
-                console.log(data)
+                alert("Successfully added")
+                window.location.reload(false);
+                // console.log(data)
             })
             .catch(err=>{
                 console.log(err)
@@ -51,7 +52,15 @@ const category = () => {
     }
 
     const handleDelete = ()=> {
-        console.log("Delete ",deleteCategory)
+        fetch(`http://localhost:4001/api/categories/${deleteCategory}`,
+        {
+            method: 'DELETE'
+        })
+        .then(res=>{
+            alert('Successfully Deleted')
+            window.location.reload(false);
+        })
+        .catch(err=>console.log(err))
     }
 
 

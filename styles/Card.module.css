@@ -51,9 +51,25 @@ margin: 5px;
 
 .links{
     text-transform: capitalize;
-    margin: 5px 15px;
+    margin: 10px 5px 0px 5px;
     display: flex;
     justify-content: space-between;
+}
+
+.links > a {
+  color: blue;
+  text-decoration: none;
+	/* box-shadow: inset 0 -.125em 0 0 #ddd; */
+	transition-property: color ;
+	transition-duration: .25s;
+	transition-timing-function: cubic-bezier(0,0,.58,1);
+  font-size: medium;
+  font-family: 'Poppins', sans-serif
+}
+
+.links > a:hover {
+  color: rgb(56, 133, 249);
+  
 }
 
 .admin_btn{

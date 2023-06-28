@@ -25,10 +25,6 @@ export default function Navbar() {
         {
             text: loggedIn ? 'Logout' : 'Login',
             href: '/login'
-        },
-        {
-            text: 'About',
-            href: '/about'
         }
     ]
 

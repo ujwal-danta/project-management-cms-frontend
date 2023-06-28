@@ -69,7 +69,6 @@ const update_project = () => {
             formData.append('image', userData.image)
             formData.append('githubLink', userData.githubLink)
             formData.append('siteLink', userData.siteLink)
-            console.log(userData)
             setTimeout(() => {
                 alert("Please wait !!! Updating data......")
             }, 500)

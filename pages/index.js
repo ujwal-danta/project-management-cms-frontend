@@ -14,18 +14,17 @@ export default function Home() {
 const router = useRouter()
 
   useEffect(() => {
-    console.log("use effect called")
     const getAllProjects = async () => {
+      setProjects([])
       const res = await fetch('http://localhost:4001/api/projects')
       const data = await res.json()
       if(search)
       {
         // get the all projects with keyword Search
-        setProjects([])
         const ans = []
         for(const obj of data){
-          const str = obj.tags[0]
-          if(str.includes(search)){
+          const str = obj.tags[0].toLowerCase()
+          if(str.includes(search.toLowerCase())){
           ans.push(obj)
           }
         }
@@ -64,11 +63,15 @@ const router = useRouter()
             <p>Filter by Course</p>
           </div>
           <div className={styles.categories}>
+            <div className={`${styles.allProjects} ${search==""?styles.active:''}`} onClick={()=>setSearch("")}>
+            {`All Projects`}
+            </div>
             {
               categories.map((category, index) => <CategoryItem 
               key={index} 
               data={category.title} 
               setSearch={setSearch}
+              search = {search}
               />
               )
             }
