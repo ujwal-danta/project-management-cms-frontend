@@ -18,7 +18,7 @@ const add_project = () => {
         title: "",
         tags: [],
         image: "",
-        githubLink: "",
+        githubLink: "#",
         siteLink: ""
     })
 

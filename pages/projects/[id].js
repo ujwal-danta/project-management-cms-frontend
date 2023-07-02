@@ -48,7 +48,7 @@ const update_project = () => {
 
 
     const handleSubmit = (e) => {
-        console.log('submitted')
+       
         e.preventDefault()
        let str = ""; 
        for (let i=0;i<selected.length;i++){

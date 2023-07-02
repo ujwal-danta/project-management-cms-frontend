@@ -60,7 +60,7 @@ const Card = ({ project }) => {
                 }
             </div>
             <div className={styles.links}>
-                <a href={githubLink} target='_blank'>Github Link</a>
+                <a href={githubLink} target={githubLink=="#"?'':'_blank'}>Github Link</a>
                 <a href={siteLink} target='_blank'>Site Link</a>
             </div>
             <div className={styles.admin_btn}>
