@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react'
 import Layout from '../components/Layout'
 import styles from '../styles/Form.module.css'
 import { useRouter } from 'next/router'
-const login = () => {
+const Login = () => {
     const router = useRouter()
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
@@ -58,4 +58,4 @@ const login = () => {
     )
 }
 
-export default login
+export default Login

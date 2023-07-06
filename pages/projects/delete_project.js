@@ -9,7 +9,7 @@ import { AiOutlineFundProjectionScreen } from 'react-icons/ai'
 import { BiCategory } from 'react-icons/bi'
 
 
-const delete_project = () => {
+const Delete_project = () => {
   const [selected, setSelected] = useState(["JavaScript"]);
   return (
     <Layout>
@@ -121,4 +121,4 @@ const delete_project = () => {
   )
 }
 
-export default delete_project
+export default Delete_project

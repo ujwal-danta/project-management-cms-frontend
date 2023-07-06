@@ -9,7 +9,7 @@ import { AiOutlineFundProjectionScreen } from 'react-icons/ai'
 import { BiCategory } from 'react-icons/bi'
 
 
-const dashboard = () => {
+const Dashboard = () => {
     const [selected, setSelected] = useState(["JavaScript"]);
     return (
         <Layout>
@@ -111,4 +111,4 @@ const dashboard = () => {
     )
 }
 
-export default dashboard
+export default Dashboard

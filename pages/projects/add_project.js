@@ -11,7 +11,7 @@ import { useRouter } from 'next/router'
 import { BASE_URL } from '../../services/helper'
 
 
-const add_project = () => {
+const Add_project = () => {
     const router = useRouter()
     const [loggedIn, setLoggedIn] = useState(false)
     const [selected, setSelected] = useState(["JavaScript"]);
@@ -204,4 +204,4 @@ const add_project = () => {
     )
 }
 
-export default add_project
+export default Add_project

@@ -11,7 +11,7 @@ import { useRouter } from 'next/router'
 import { BASE_URL } from '../../services/helper'
 
 
-const update_project = () => {
+const Update_project = () => {
     const router = useRouter()
     const { id } = router.query
     // const [demo, setDemo] = useState(0)
@@ -237,4 +237,4 @@ const update_project = () => {
     )
 }
 
-export default update_project
+export default Update_project

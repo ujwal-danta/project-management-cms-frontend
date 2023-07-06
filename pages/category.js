@@ -10,7 +10,7 @@ import { BiCategory } from 'react-icons/bi'
 import { BASE_URL } from '../services/helper'
 
 
-const category = () => {
+const Category = () => {
     const [selected, setSelected] = useState(["JavaScript"]);
     const [category,setCategory] = useState("")
     const [allCategories,setAllCategories] = useState([])
@@ -169,4 +169,4 @@ const category = () => {
     )
 }
 
-export default category
+export default Category
