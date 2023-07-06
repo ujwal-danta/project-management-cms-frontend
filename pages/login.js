@@ -10,7 +10,7 @@ const login = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        if (email === "ujwaldanta@gmail.com" && password === "ujwalkumardanta786") {
+        if (email === process.env.EMAIL && password ===process.env.PASSWORD) {
             localStorage.setItem('email', true)
             localStorage.setItem('password', true)
             router.push('/projects/add_project')
