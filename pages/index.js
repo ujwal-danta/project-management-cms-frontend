@@ -4,6 +4,7 @@ import CategoryItem from '../components/CategoryItem'
 import Card from '../components/Card'
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
+import { BASE_URL } from '../services/helper'
 
 
 export default function Home() {
@@ -16,7 +17,7 @@ const router = useRouter()
   useEffect(() => {
     const getAllProjects = async () => {
       setProjects([])
-      const res = await fetch('http://localhost:4001/api/projects')
+      const res = await fetch(`${BASE_URL}/api/projects`)
       const data = await res.json()
       if(search)
       {
@@ -41,7 +42,7 @@ const router = useRouter()
     }
 
     const getAllCategories = async () => {
-      const res = await fetch('http://localhost:4001/api/categories')
+      const res = await fetch(`${BASE_URL}/api/categories`)
       const data = await res.json()
       setCategories(data)
     }

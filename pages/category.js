@@ -7,6 +7,7 @@ import { TagsInput } from "react-tag-input-component";
 import Link from 'next/link'
 import { AiOutlineFundProjectionScreen } from 'react-icons/ai'
 import { BiCategory } from 'react-icons/bi'
+import { BASE_URL } from '../services/helper'
 
 
 const category = () => {
@@ -17,7 +18,7 @@ const category = () => {
 
     useEffect(()=>{
         const getAllCategories = async () => {
-            const res = await fetch('http://localhost:4001/api/categories')
+            const res = await fetch(`${BASE_URL}/api/categories`)
             const data = await res.json()
             setAllCategories(data)
             if(data.length)
@@ -27,7 +28,7 @@ const category = () => {
     },[])
 
     const handleSubmit = () => {
-        fetch('http://localhost:4001/api/categories/addCategory', {
+        fetch(`${BASE_URL}/api/categories/addCategory`, {
             method: 'POST',
             body: JSON.stringify({
             title : category
@@ -52,7 +53,7 @@ const category = () => {
     }
 
     const handleDelete = ()=> {
-        fetch(`http://localhost:4001/api/categories/${deleteCategory}`,
+        fetch(`${BASE_URL}/api/categories/${deleteCategory}`,
         {
             method: 'DELETE'
         })

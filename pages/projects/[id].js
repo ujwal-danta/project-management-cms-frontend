@@ -8,6 +8,7 @@ import Link from 'next/link'
 import { AiOutlineFundProjectionScreen } from 'react-icons/ai'
 import { BiCategory } from 'react-icons/bi'
 import { useRouter } from 'next/router'
+import { BASE_URL } from '../../services/helper'
 
 
 const update_project = () => {
@@ -25,7 +26,7 @@ const update_project = () => {
     useEffect(() => {
 
         const getProject = async () => {
-            const res = await fetch(`http://localhost:4001/api/projects/${id}`)
+            const res = await fetch(`${BASE_URL}/api/projects/${id}`)
             const data = await res.json()
             const temp = data.tags[0].split(",")
             for (let i = 0; i < temp.length; i++) {
@@ -72,7 +73,7 @@ const update_project = () => {
             setTimeout(() => {
                 alert("Please wait !!! Updating data......")
             }, 500)
-            fetch(`http://localhost:4001/api/projects/${id}`, {
+            fetch(`${BASE_URL}/api/projects/${id}`, {
                 method: 'PATCH',
                 // headers:  {"Content-Type": "multipart/form-data"},
                 body: formData

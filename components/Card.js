@@ -1,7 +1,7 @@
 import React from 'react'
 import styles from '../styles/Card.module.css'
 import Image from 'next/image'
-// import image from '../designs/Screenshot (99).png'
+import { BASE_URL } from '../services/helper'
 import Tag from './Tag'
 import { v4 as uuid } from 'uuid';
 import { useRouter } from 'next/router';
@@ -28,7 +28,7 @@ const Card = ({ project }) => {
     }
     
    const handleSubmitDelete = ()=>{
-    fetch(`http://localhost:4001/api/projects/${_id}`,
+    fetch(`${BASE_URL}/api/projects/${_id}`,
     {
         method: 'DELETE'
     })

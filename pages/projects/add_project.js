@@ -8,6 +8,7 @@ import Link from 'next/link'
 import { AiOutlineFundProjectionScreen } from 'react-icons/ai'
 import { BiCategory } from 'react-icons/bi'
 import { useRouter } from 'next/router'
+import { BASE_URL } from '../../services/helper'
 
 
 const add_project = () => {
@@ -44,7 +45,7 @@ const add_project = () => {
             setTimeout(() => {
                 alert("Please wait !!! Posting data......")
             }, 1000)
-            fetch("http://localhost:4001/api/projects", {
+            fetch(`${BASE_URL}/api/projects`, {
                 method: 'POST',
                 body: formData
             })
