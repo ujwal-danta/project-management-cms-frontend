@@ -7,12 +7,12 @@ const Footer = () => {
             <div className={styles.footer}>
                 <div className={styles.icon_container}>
                     <div className={styles.icon}>
-                        <a href="https://github.com/ujwal-danta" className={styles.link} target='_blank'>
+                        <a href="https://github.com/ujwal-danta" className={styles.link} target='_blank' rel="noreferrer">
                         <AiFillGithub />
                         </a>
                     </div>
                     <div className={styles.icon}>
-                        <a href="https://www.linkedin.com/in/ujwal-danta-038509203/" className={styles.link} target='_blank'>
+                        <a href="https://www.linkedin.com/in/ujwal-danta-038509203/" className={styles.link} target='_blank' rel="noreferrer">
                         <AiFillLinkedin />
                         </a>
                     </div>
